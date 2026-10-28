@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Track Changes Diff Checker</title>
+<meta name="description" content="Compare two versions of your writing and see the differences as tracked changes. Free, and your text never leaves your browser.">
+<link rel="stylesheet" href="style.css">
+<script>try { const t = localStorage.getItem("theme"); if (t) document.documentElement.dataset.theme = t; } catch (e) {}</script>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="brand">
+      <h1>Track Changes Diff Checker</h1>
+      <p>Paste two versions of your text to see what changed. Your text stays in your browser.</p>
+    </div>
+    <div class="controls">
+      <div class="ctl" data-tip="How much wording two sentences need in common to be compared word by word. Recommended: 35%. Go lower if heavily rewritten sentences show as fully deleted and replaced, or higher if unrelated sentences get paired.">
+        <label for="thr">Sentence match</label>
+        <input type="range" id="thr" min="15" max="70" step="5" value="35">
+        <output id="thr-v" for="thr">35%</output>
+      </div>
+      <div class="ctl" data-tip="Treat curly and straight quotes as the same"><input type="checkbox" id="quotes" checked><label for="quotes">Ignore quote style</label></div>
+      <div class="ctl"><input type="checkbox" id="collapse"><label for="collapse">Fold unchanged</label></div>
+      <div class="btns">
+        <button id="b-clear" type="button">Clear</button>
+      </div>
+    </div>
+    <button id="b-theme" type="button" class="icon"></button>
+  </header>
+
+  <div class="workspace">
+    <section class="inputs">
+      <div class="field old">
+        <div class="field-head"><label for="old"><span class="sw"></span>Original</label><span class="count" id="c-old"></span></div>
+        <textarea id="old" spellcheck="false"></textarea>
+      </div>
+      <div class="field new">
+        <div class="field-head"><label for="new"><span class="sw"></span>Revised</label><button id="b-swap" type="button" class="icon" data-tip="Swap original and revised" aria-label="Swap original and revised"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="M5 13V3M2 6l3-3 3 3M11 3v10M8 10l3 3 3-3" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button><span class="count" id="c-new"></span></div>
+        <textarea id="new" spellcheck="false"></textarea>
+      </div>
+    </section>
+
+    <div class="splitter" id="split" role="separator" aria-orientation="vertical" aria-label="Resize panels" aria-valuemin="20" aria-valuemax="75" tabindex="0" data-tip="Drag to resize. Double click to reset."></div>
+
+    <section class="result">
+      <div class="result-head">
+        <div class="result-info">
+          <h2>Changes</h2>
+          <div class="legend"><span><del>removed</del></span><span><ins>added</ins></span></div>
+          <div class="stats" id="stats"></div>
+          <span class="toast" id="toast" role="status"></span>
+        </div>
+        <div class="result-actions">
+          <div class="lh-wrap">
+            <button id="b-lh" type="button" class="icon" data-tip="Line spacing" aria-label="Line spacing" aria-haspopup="menu" aria-expanded="false"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="M7 3.5h7M7 8h7M7 12.5h7M3 2v12M1.5 3.5L3 2l1.5 1.5M1.5 12.5L3 14l1.5-1.5" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+            <div class="menu" id="lh-menu" role="menu" hidden>
+              <button type="button" role="menuitemradio" data-lh="1.6">Compact</button>
+              <button type="button" role="menuitemradio" data-lh="1.9">Normal</button>
+              <button type="button" role="menuitemradio" data-lh="2.2">Relaxed</button>
+            </div>
+          </div>
+          <button id="b-copy" type="button" class="primary">Copy for Google Docs</button>
+        </div>
+      </div>
+      <article class="paper" id="out"></article>
+    </section>
+  </div>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>

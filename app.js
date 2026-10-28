@@ -215,13 +215,13 @@ function compare(A, B) {
       else { st.changed++; blocks.push({ k: "chg", lbl: `¶${o.b + 1}`, tip: `Paragraph ${o.b + 1}`, html: diffPara(PA[o.a], PB[o.b], st) }); }
     } else if (o.a != null) {
       if (movedTo.has(o.a)) blocks.push({ k: "note", lbl: "↕", tip: "Moved paragraph", html: `This paragraph moved to ¶ ${movedTo.get(o.a) + 1}.` });
-      else { st.del += wc(PA[o.a]); blocks.push({ k: "del", lbl: `<b>−</b>¶${o.a + 1}`, tip: `Paragraph ${o.a + 1} of the original, deleted`, html: `<del>${esc(PA[o.a])}</del>` }); }
+      else { st.del += wc(PA[o.a]); blocks.push({ k: "del", lbl: `<b>−</b>${o.a + 1}`, tip: `Paragraph ${o.a + 1} of the original, deleted`, html: `<del>${esc(PA[o.a])}</del>` }); }
     } else {
       st.changed++;
       if (movedFrom.has(o.b)) {
         const a = PA[movedFrom.get(o.b)];
         blocks.push({ k: "mv", lbl: `¶${o.b + 1}`, tip: `Paragraph ${o.b + 1}, moved here from ¶ ${movedFrom.get(o.b) + 1} of the original`, html: sameText(a, PB[o.b]) ? esc(PB[o.b]) : diffPara(a, PB[o.b], st) });
-      } else { st.ins += wc(PB[o.b]); blocks.push({ k: "ins", lbl: `<b>+</b>¶${o.b + 1}`, tip: `Paragraph ${o.b + 1}, new`, html: `<ins>${esc(PB[o.b])}</ins>` }); }
+      } else { st.ins += wc(PB[o.b]); blocks.push({ k: "ins", lbl: `<b>+</b>${o.b + 1}`, tip: `Paragraph ${o.b + 1}, new`, html: `<ins>${esc(PB[o.b])}</ins>` }); }
     }
   }
 

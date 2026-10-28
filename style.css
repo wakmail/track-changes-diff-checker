@@ -138,8 +138,9 @@ button.primary { background: var(--ink); color: var(--paper); border-color: var(
 .blk { grid-column: 1 / -1; display: grid; grid-template-columns: subgrid; }
 .lbl { font-family: var(--mono); font-size: 0.8rem; white-space: nowrap; color: var(--muted); line-height: calc(15.5px * var(--lh, 1.9)); cursor: default; }
 .k-mv .lbl, .k-note .lbl { color: var(--accent); }
-.k-del .lbl { color: var(--del-ink); font-weight: 700; font-size: 1.05rem; }
-.k-ins .lbl { color: var(--ins-ink); font-weight: 700; font-size: 1.05rem; }
+.k-del .lbl { color: var(--del-ink); }
+.k-ins .lbl { color: var(--ins-ink); }
+.lbl b { font-size: 1.05rem; margin-right: 1px; }
 .txt { margin: 0; font-family: var(--serif); font-size: 15.5px; line-height: var(--lh, 1.9); }
 .k-note .txt { font-family: var(--sans); font-size: 0.85rem; color: var(--muted); font-style: italic; }
 @media (max-width: 600px) {

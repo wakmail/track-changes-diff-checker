@@ -94,7 +94,7 @@ button.icon { padding: 3px 10px; line-height: 0; color: var(--muted); }
 #gh { display: inline-flex; align-items: center; gap: 5px; height: 32px; padding: 0 8px; border-radius: 6px; color: var(--muted); text-decoration: none; }
 #b-theme:hover, #gh:hover { color: var(--ink); background: color-mix(in srgb, var(--line) 60%, transparent); }
 #gh:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
-#b-theme svg, #gh svg { width: 16px; height: 16px; }
+#b-theme svg, #gh svg { width: 17px; height: 17px; }
 button.icon:hover { color: var(--ink); }
 @media (min-width: 761px) and (max-width: 1099px) { #b-swap svg { transform: rotate(90deg); } }
 .count { font-family: var(--mono); font-size: 0.75rem; color: var(--muted); font-variant-numeric: tabular-nums; }
